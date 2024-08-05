@@ -6,7 +6,7 @@ local _,playerClass = UnitClass("player");
 
 if playerClass == "PRIEST" then
     resSpell = "Resurrection";
-elseif playerClass == "SAHAMAN" then
+elseif playerClass == "SHAMAN" then
     resSpell = "Ancestral Spirit";
 end
 
