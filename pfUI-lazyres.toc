@@ -1,0 +1,10 @@
+## Interface: 11200
+## Title: |cff33ffccpf|cffffffffUI|cffaaaaaa LazyRes
+## Version: 2.0
+## Notes: Addon for quick raid ressing after a wipe.
+## Dependencies: pfUI
+## X-LocalName: LazyRes
+
+pfUI-lazyres.lua
+pfUI-lazyres-config.lua
+pfUI-lazyres-gui.lua
