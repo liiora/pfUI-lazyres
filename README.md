@@ -2,7 +2,9 @@
 
 This addon is an external module for [pfUI](https://gitlab.com/shagu/pfUI) addon that makes resurrecting the raid after a wipe easy.
 
-Type /pflr (or add that command to a macro) to quickly res someone near you. Classes that can also res will be ressed before classes with mana, followed by classes without mana. The class ress order is Shaman > Paladin > Priest > Druid > Mage > Hunter > Warlock > Warrior > Rogue.
+Type `/pflr` (or add that command to a macro) to quickly res someone near you.
+
+Classes that can also res will be ressed before classes with mana, followed by classes without mana. The class ress order is Shaman > Paladin > Priest > Druid > Mage > Hunter > Warlock > Warrior > Rogue.
 
 Players that are already being ressed will be skipped over, if the other resser uses a healcomm compatible addon.
 
