@@ -1,7 +1,7 @@
 ## Interface: 11200
 ## Title: |cff33ffccpf|cffffffffUI|cffaaaaaa [LazyRes]
 ## Author: Liiora, BlackHaste, Bergador
-## Version: 2.0
+## Version: 2.1.0
 ## Notes: Addon for quick raid ressing after a wipe.
 ## Dependencies: pfUI
 ## X-LocalName: LazyRes

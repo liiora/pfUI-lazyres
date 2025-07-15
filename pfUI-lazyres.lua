@@ -30,10 +30,22 @@ pfUI:RegisterModule("lazyres", function()
         end
     end
 
+    local function Debug(msg)
+        if config.debug == "1" then
+            DEFAULT_CHAT_FRAME:AddMessage(msg_pref .. msg)
+        end
+    end
+
     local function IsInParty() return GetNumRaidMembers() == 0 and GetNumPartyMembers() > 0 end
 
     _G.SLASH_LAZYRES1 = "/pflr"
     function _G.SlashCmdList.LAZYRES()
+        local spell, _, _, _, _ = UnitCastingInfo("player")
+        if spell then
+            Debug("Already casting a spell")
+            return
+        end
+
         CastSpellByName(resSpell)
 
         local numMembers = IsInParty() and GetNumPartyMembers() or GetNumRaidMembers()
