@@ -11,3 +11,9 @@ Players that are already being ressed will be skipped over, if the other resser 
 If you have a friendly dead target selected, /pflr will work just like a normal res spell and cast res on that target.
 
 If you have no target selected and no dead raid member is within range, /pflr will cast the Resurrect spell awaiting target selection. That way you can still select targets manually.
+
+## Improvements of this fork
+
+* Works in raids and parties
+* Does only require pfUI, but no other external libraries
+* Adds a config for chat-notifications
