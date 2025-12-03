@@ -1,12 +1,18 @@
 pfUI:RegisterModule("lazyres", function()
     local msg_pref = GetAddOnMetadata("pfui-lazyres", "Title") .. "|r: "
-    local config
 
     pfUI.lazyres = CreateFrame("Frame", "pfLazyres", UIParent)
     pfUI.lazyres:RegisterEvent("VARIABLES_LOADED")
 
-    function pfUI.lazyres:Load()
-        config = C.lazyres
+
+    local NoopLogFn = function(_) end
+    local ChatLogFn = function(msg) DEFAULT_CHAT_FRAME:AddMessage(msg_pref .. msg) end
+    local Log = NoopLogFn
+    local Debug = NoopLogFn
+
+    function pfUI.lazyres:UpdateConfig()
+        Log = C.lazyres.notification == "1" and ChatLogFn or NoopLogFn
+        Debug = C.lazyres.debug == "1" and ChatLogFn or NoopLogFn
     end
 
     local classOrder = {"SHAMAN", "PALADIN", "PRIEST", "DRUID", "MAGE", "HUNTER", "WARLOCK", "WARRIOR", "ROGUE"}
@@ -20,20 +26,8 @@ pfUI:RegisterModule("lazyres", function()
     elseif playerClass == "PALADIN" then
         resSpell = "Redemption"
     else
-        DEFAULT_CHAT_FRAME:AddMessage(msg_pref .. "No resurrection spell found. Exiting addon ...")
+        ChatLogFn("No resurrection spell found. Exiting addon ...")
         return
-    end
-
-    local function Log(msg)
-        if config.notification == "1" then
-            DEFAULT_CHAT_FRAME:AddMessage(msg_pref .. msg)
-        end
-    end
-
-    local function Debug(msg)
-        if config.debug == "1" then
-            DEFAULT_CHAT_FRAME:AddMessage(msg_pref .. msg)
-        end
     end
 
     local function IsInParty() return GetNumRaidMembers() == 0 and GetNumPartyMembers() > 0 end
@@ -70,5 +64,5 @@ pfUI:RegisterModule("lazyres", function()
         Log("select target to resurrecting")
     end
 
-    pfUI.lazyres:SetScript("OnEvent", pfUI.lazyres.Load)
+    pfUI.lazyres:SetScript("OnEvent", pfUI.lazyres.UpdateConfig)
 end)
