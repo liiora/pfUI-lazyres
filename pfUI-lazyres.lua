@@ -31,6 +31,7 @@ pfUI:RegisterModule("lazyres", function()
     end
 
     local function IsInParty() return GetNumRaidMembers() == 0 and GetNumPartyMembers() > 0 end
+    local function InSight(unit) return pfUI.api.UnitInLineOfSight("player", unit) or true end
 
     _G.SLASH_LAZYRES1 = "/pflr"
     function _G.SlashCmdList.LAZYRES()
@@ -52,6 +53,7 @@ pfUI:RegisterModule("lazyres", function()
                 and UnitIsDead(unitId)
                 and not UnitIsGhost(unitId)
                 and not pfUI.api.libpredict:UnitHasIncomingResurrection(unitId)
+                and InSight(unitId)
                 and SpellIsTargeting()
                 and SpellCanTargetUnit(unitId) then
                     SpellTargetUnit(unitId)
