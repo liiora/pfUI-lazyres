@@ -35,7 +35,7 @@ pfUI:RegisterModule("lazyres", function()
 
     _G.SLASH_LAZYRES1 = "/pflr"
     function _G.SlashCmdList.LAZYRES()
-        local spell, _, _, _, _ = UnitCastingInfo("player")
+        local spell, _, _, _, _ = pfGetCastInfo("player")
         if spell then
             Debug("Already casting a spell")
             return
